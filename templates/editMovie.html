@@ -1,0 +1,28 @@
+{% extends "header.html" %} {% block content %}
+<div class="con frame">
+  <form action="{{ url_for('editMovie',g_id=movie.g_id,m_id=movie.id) }}" method="post">
+    <div class="con">
+      <div class="tag">
+        <label for="name" class="label"> Genre</label>
+        <select required name="genre">
+          <option value="" disabled><sup>*</sup> Genre</option>
+          {% for genre in genres %}
+          <option value="{{ genre.id }}" {% if song and genre.id == movie.g_id %}selected{% endif %}>{{ genre.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="tag">
+        <label for="name" class="label"> Name</label>
+        <input id="name" name="name" type="text" required autocomplete="off" value="{% if movie %}{{movie.name}}{% endif %}">
+      </div>
+      <div class="tag">
+        <label for="desc" class="label">Description</label>
+        <input id="desc" name="desc" type="text" autocomplete="off" value="{% if movie %}{{movie.description}}{% endif %}">
+      </div>
+      <div class="tag del">
+        <button type="submit" class="edit">Edit</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

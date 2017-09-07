@@ -1,0 +1,29 @@
+{% extends "header.html" %}
+
+{% block content %}
+<div class="con frame">
+  <p class="tag font">
+    Name: <span class="tag">
+      {{ movie.name }}
+    </span>
+  </p>
+
+  <p class="tag font">
+    Description: <span class="tag">
+      {{ movie.description }}
+    </span>
+
+  </p>
+  <div class="but tag">
+    <div class="edit">
+      <a href="{{ url_for('editMovie',g_id=movie.g_id, m_id=movie.id) }}">Edit</a>
+    </div>
+
+    <div class="edit">
+      <a href="{{ url_for('deleteMovie',g_id=movie.g_id,m_id=movie.id) }}">Delete</a>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

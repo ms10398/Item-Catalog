@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Movie Catalog</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename = 'css/style.css') }}">
+</head>
+
+<body>
+  <div class="header">
+    <a href="/" class="head">Movie Catalog</a>
+    <div id="signInButton" class="signInButton">
+      <span class="g-signin" data-scope="openid email" data-clientid="1058248511586-7ep1r9cjpc7o941f4r1c2r4nofjklkjb.apps.googleusercontent.com" data-redirecturi="postmessage" data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback"
+        data-approvalprompt="force">
+            </span>
+    </div>
+  </div>
+  <div class="user" id="user_info">
+    <div>
+        <img id="userImg" class="circle userImg" width="50" height="50" src="{{ session['img'] }}">
+        <span id="userName" class="userName">{{ session['name'] }}</span>
+        <p id="userEmail" class="userEmail">{{ session['email'] }}</p>
+    </div>
+    <div id="logout_button1">
+      <button class="logout" type="button" name="logout" id="logout">Logout</button>
+    </div>
+  </div>
+  <div class="title">
+    <p class="tit">{% block title %} {% endblock %}</p>
+  </div>
+  <div class="block">
+    {% block content %} {% endblock %}
+  </div>
+
+  <script>
+    var state = '{{ state }}'
+    var logged = "{{ session['provider'] }}"
+  </script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+  <script src="//apis.google.com/js/platform.js?onload=start">
+  </script>
+  <script type="text/javascript" src="{{ url_for('static',filename = 'js/app.js') }}">
+  </script>
+  <script type="text/javascript">
+    function signInCallback(authResult) {
+      if (authResult['code']) {
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state=' + state,
+          processData: false,
+          contentType: 'application/json',
+          data: authResult['code'],
+          success: function(result) {
+            if (result) {
+              var img = result['img'].replace('https', 'http');
+              hide.loginbutton();
+              $('#userImg').attr('src', img);
+              $('#userName').html(result['name']);
+              $('#userEmail').html(result['email']);
+              logged = 'google';
+            } else if (authResult['error']) {
+              console.log("Following Error Occured:" + authResult['error']);
+            } else {
+              console.log('Failed to make connection with server, Please check your internet connection.');
+            }
+          }
+        });
+      }
+    };
+
+    var logout = function() {
+
+        if (logged == 'google') {
+
+          $.ajax({
+
+            type: 'POST',
+            url: '/logout',
+            processData: false,
+            contentType: 'application/json',
+            success: function(result) {
+              if (result['state'] == 'loggedOut') {
+                window.location = "/";
+              } else if (result['state'] == 'notConnected') {
+
+              } else if (result['state'] == 'errorRevoke') {
+
+              }
+
+            }
+
+          });
+
+        }
+      }
+
+        $('#logout').click(function() {
+          logout();
+        });
+  </script>
+</body>
+
+</html>

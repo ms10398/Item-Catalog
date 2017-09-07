@@ -1,0 +1,23 @@
+{% extends 'header.html' %}
+{% block content %}
+<div class="con`">
+
+
+{% if error %}
+<div class="error">
+  {{ error }}
+</div>
+{% endif %}
+
+<div class="add">
+  <a href="{{ url_for('newMovie') }}">+</a>
+</div>
+
+{% for genre in genres %}
+<div class="tile">
+  <a href="{{ url_for('genreView',gid = genre.id ) }}">{{ genre.name }}</a>
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}

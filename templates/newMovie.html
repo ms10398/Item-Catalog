@@ -1,0 +1,28 @@
+{% extends "header.html" %} {% block content %}
+<div class="con frame">
+  <form action="{{ url_for('newMovie') }}" method="post">
+    <div class="con">
+      <div class="tag">
+        <label for="name" class="label"> Genre</label>
+        <select required name="genre">
+          <option value="" disabled><sup>*</sup> Genre</option>
+          {% for genre in genres %}
+          <option value="{{ genre.id }}">{{ genre.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="tag">
+        <label for="name" class="label"> Name</label>
+        <input id="name" name="name" type="text" required autocomplete="off" value="Enter Name Here">
+      </div>
+      <div class="tag">
+        <label for="desc" class="label">Description</label>
+        <input id="desc" name="desc" type="text" autocomplete="off" value="Enter Description">
+      </div>
+      <div class="tag del">
+        <button type="submit" class="edit">Create</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
