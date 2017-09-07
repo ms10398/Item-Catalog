@@ -29,6 +29,8 @@
   2. Run your application within the VM
 
   ```
+    $ python /vagrant/catalog/database_setup.py
+    $ python /vagrant/catalog/put_genre.py
     $ python /vagrant/catalog/main.py
   ```
   3. Access and test your application by visiting [http://localhost:5000](http://localhost:5000).
