@@ -1,0 +1,166 @@
+body {
+  background-color: #56FC2E;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #25160B;
+  color: white;
+}
+
+.header {
+  text-align: center;
+  width: 98%+2px;
+  padding: 10px 0;
+  padding-left: 15px;
+  color: white;
+  height: 22px;
+  background-color: #258316;
+  font-size: 24px;
+  margin: 0 auto;
+}
+
+.head{
+  padding-left: 100px;
+  padding-right: 0;
+}
+
+.signInButton {
+  float: right;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+.circle{
+  border-radius: 50%;
+}
+
+.user{
+  float: right;
+  padding-top: 5px;
+  text-align: center;
+  padding-right: 10px;
+}
+
+.logout{
+  background-color: #0932F2;
+  padding: 5px;
+  width: 50%;
+  color: white;
+  border-radius: 15%;
+  border: 0;
+}
+
+.con{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.tag{
+  margin: 0 auto;
+  padding: 10px;
+}
+.error
+{
+  background-color: red;
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  padding: 5px;
+  margin: : 0 auto;
+}
+
+.tile{
+  width: 50%;
+  text-align: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 24px;
+  margin: 5px auto;
+  background-color: #4858A5;
+  transition: all 0.5s ease;
+  border-radius: 0%;
+}
+
+.tile:hover{
+  border-radius: 20%;
+  background-color: #6F83E2;
+}
+
+.add{
+  background-color: #076720;
+  color: white;
+  font-size: 24px;
+  position: fixed;
+  right: 25px;
+  width: 2%;
+  text-align: center;
+  bottom: 25px;
+  border: 0;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.8s ease;
+}
+
+.add:hover{
+  background-color: #0AAD34;
+}
+
+.title{
+  text-align: center;
+  padding: 5px;
+  text-decoration: underline;
+}
+.tit{
+  font-size: 20px;
+  color: #4B5864;
+}
+
+.but{
+  display: flex;
+}
+
+.edit{
+  margin: 5px;
+  border: 0;
+  color: white;
+  border-radius: 10%;
+  background-color: #4767DF;
+  padding: 8px;
+}
+
+.del{
+  width: 8%;
+  padding: 5px;
+  margin: 10px auto;
+  border: 0;
+  border-radius: 10%;
+  background-color: #4767DF;
+  text-align: center;
+}
+
+.font{
+  font-size: 24px;
+  color: white;
+}
+
+.frame{
+  border: 2px solid green;
+  width: 60%;
+  background: #31FC2E;
+}
+
+.label {
+  width: 5%;
+  padding: 10px;
+  font-size: 22px;
+  text-align: center;
+}
